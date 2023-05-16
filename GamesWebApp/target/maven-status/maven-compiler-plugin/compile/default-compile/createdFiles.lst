@@ -1,0 +1,9 @@
+com\svalero\dao\Database.class
+com\svalero\dao\PurchaseDAO.class
+com\svalero\dao\GameMapper.class
+com\svalero\domain\Game.class
+com\svalero\util\Constants.class
+com\svalero\util\DateUtils.class
+com\svalero\dao\PurchaseMapper.class
+com\svalero\domain\Purchase.class
+com\svalero\dao\GameDAO.class
