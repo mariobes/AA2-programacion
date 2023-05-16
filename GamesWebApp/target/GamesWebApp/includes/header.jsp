@@ -99,7 +99,7 @@
 
     <header>
         <div class="container">
-            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+            <div class="d-flex flex-column flex-md-row align-items-center pb-3 mt-3 mb-4 border-bottom">
                 <a href="index.jsp" class="d-flex align-items-center link-body-emphasis text-decoration-none">
                     <span class="fs-4">Games Web App</span>
                 </a>
@@ -114,7 +114,7 @@
 
             <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
                 <h1 class="display-4 fw-normal">Catálogo de juegos</h1>
-                <p class="fs-5 text-body-secondary">Aqí puedes encontrar todo el cátalogo de juegos disponibles.</p>
+                <p class="fs-5 text-body-secondary">Compra tus juegos favoritos.</p>
             </div>
         </div>
     </header>
