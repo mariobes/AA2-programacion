@@ -32,6 +32,10 @@ public interface GameDAO {
     @UseRowMapper(GameMapper.class)
     List<Game> getAllGames();
 
+    @SqlQuery("SELECT * FROM games WHERE id = ?")
+    @UseRowMapper(GameMapper.class)
+    Game getGame(int id);
+
     static boolean isGame(String name, String developer) {
 
         String sql = "SELECT COUNT(*) FROM games WHERE name = ? AND developer = ?";
@@ -64,13 +68,13 @@ public interface GameDAO {
         return game;
     }
 
-    static Game getGame(int id) {
-        String sql = "SELECT * FROM games WHERE id = ?";
-
-        return db.createQuery(sql)
-                .bind(0, id)
-                .mapToBean(Game.class)
-                .one();
-    }
+//    static Game getGame(int id) {
+//        String sql = "SELECT * FROM games WHERE id = ?";
+//
+//        return db.createQuery(sql)
+//                .bind(0, id)
+//                .mapToBean(Game.class)
+//                .one();
+//    }
 
 }
