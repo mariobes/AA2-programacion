@@ -10,6 +10,33 @@
 
 <%@include file="includes/header.jsp"%>
 
+<script>
+  // Obtener todos los enlaces con el atributo href que comience con "remove-game"
+  var links = document.querySelectorAll("a[href^='remove-game']");
+
+  // Función para mostrar el cuadro de diálogo de confirmación y eliminar si se confirma
+  function confirmDelete(event) {
+    event.preventDefault();
+    var elementId = this.getAttribute("href"); // Obtener el nombre del elemento a eliminar
+    var message = "¿Estás seguro de que deseas eliminar el elemento " + elementId + "?";
+
+    if (confirm(message)) {
+      // Aquí puedes agregar la lógica para eliminar el elemento utilizando el nombre obtenido
+      // Por ejemplo, puedes usar getElementById o cualquier otra forma de selección de elementos
+      var elementToRemove = document.getElementById(elementId);
+      if (elementToRemove) {
+        elementToRemove.remove(); // Eliminar el elemento
+      }
+    }
+  }
+
+  // Asociar el evento de clic a los enlaces seleccionados
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", confirmDelete);
+  }
+</script>
+
+
 <div class="album py-4">
     <div class="container">
 
@@ -40,7 +67,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="" class="btn btn-sm btn-outline-primary">Ver detalles</a>
-                                <a href="" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="remove-game?id=<%= game.getId() %>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </div>
                             <small class="text-body-secondary">Fecha de lanzamiento: <b><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></b></small>
                         </div>

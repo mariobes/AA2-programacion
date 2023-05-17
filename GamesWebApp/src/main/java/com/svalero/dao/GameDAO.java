@@ -15,23 +15,23 @@ import static com.svalero.dao.Database.db;
 public interface GameDAO {
 
     @SqlUpdate("INSERT INTO games (name, developer, game_18, release_date) VALUES (?, ?, ?, ?)")
-    void registerGame(String name, String developer, char game_18, LocalDate release_date) throws  SQLException;
+    void registerGame(String name, String developer, char game_18, LocalDate release_date);
 
     @SqlUpdate("UPDATE games SET name = ?, developer = ?, game_18 = ?, release_date = ? WHERE name = ? AND developer = ?")
-    void modifyGame(String name, String developer, char game_18, LocalDate release_date, String previousName, String previousDeveloper) throws SQLException;
+    void modifyGame(String name, String developer, char game_18, LocalDate release_date, String previousName, String previousDeveloper);
 
     @SqlQuery("SELECT * FROM games WHERE name = ?")
     @UseRowMapper(GameMapper.class)
-    List<Game> searchGame(String name) throws SQLException;
+    List<Game> searchGame(String name);
 
-    @SqlUpdate("DELETE FROM games WHERE name = ? AND developer = ?")
-    void deleteGame(String name, String developer) throws SQLException;
+    @SqlUpdate("DELETE FROM games WHERE id = ?")
+    void deleteGame(int id);
 
     @SqlQuery("SELECT * FROM games")
     @UseRowMapper(GameMapper.class)
-    List<Game> getAllGames() throws SQLException;
+    List<Game> getAllGames();
 
-    static boolean isGame(String name, String developer) throws SQLException {
+    static boolean isGame(String name, String developer) {
 
         String sql = "SELECT COUNT(*) FROM games WHERE name = ? AND developer = ?";
 
@@ -44,7 +44,7 @@ public interface GameDAO {
         return count != 0;
     }
 
-    static Game getGame(String name, String developer) throws SQLException {
+    static Game getGame(String name, String developer) {
         String sql = "SELECT * FROM games WHERE name = ? AND developer = ?";
 
         Game game = db.createQuery(sql)
@@ -63,7 +63,7 @@ public interface GameDAO {
         return game;
     }
 
-    static Game getGame(int id) throws SQLException {
+    static Game getGame(int id) {
         String sql = "SELECT * FROM games WHERE id = ?";
 
         return db.createQuery(sql)
