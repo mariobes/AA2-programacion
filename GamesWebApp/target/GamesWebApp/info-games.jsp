@@ -39,7 +39,7 @@
                         <p class="card-text"><%= game.getDeveloper() %></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="" class="btn btn-sm btn-outline-primary">Ver detalles</a>
+                                <a href="game-view-details.jsp?id=<%= game.getId() %>" class="btn btn-sm btn-outline-primary">Ver detalles</a>
                                 <a href="remove-game?id=<%= game.getId() %>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </div>
                             <small class="text-body-secondary">Fecha de lanzamiento: <b><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></b></small>

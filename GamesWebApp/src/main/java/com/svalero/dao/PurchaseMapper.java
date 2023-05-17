@@ -14,7 +14,8 @@ public class PurchaseMapper implements RowMapper<Purchase> {
     @Override
     public Purchase map(ResultSet rs, StatementContext ctx) throws SQLException {
 
-        Game game = GameDAO.getGame(rs.getInt("game_id"));
+        Game game = Database.jdbi.withExtension(GameDAO.class,
+                dao -> dao.getGame(rs.getInt("ID_team")));
 
         return new Purchase(rs.getInt("id"),
                 rs.getFloat("price"),
