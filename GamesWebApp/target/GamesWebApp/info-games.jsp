@@ -10,8 +10,48 @@
 
 <%@include file="includes/header.jsp"%>
 
-<div class="album py-5">
+<script>
+  // Obtener todos los enlaces con el atributo href que comience con "remove-game"
+  var links = document.querySelectorAll("a[href^='remove-game']");
+
+  // Función para mostrar el cuadro de diálogo de confirmación y eliminar si se confirma
+  function confirmDelete(event) {
+    event.preventDefault();
+    var elementId = this.getAttribute("href"); // Obtener el nombre del elemento a eliminar
+    var message = "¿Estás seguro de que deseas eliminar el elemento " + elementId + "?";
+
+    if (confirm(message)) {
+      // Aquí puedes agregar la lógica para eliminar el elemento utilizando el nombre obtenido
+      // Por ejemplo, puedes usar getElementById o cualquier otra forma de selección de elementos
+      var elementToRemove = document.getElementById(elementId);
+      if (elementToRemove) {
+        elementToRemove.remove(); // Eliminar el elemento
+      }
+    }
+  }
+
+  // Asociar el evento de clic a los enlaces seleccionados
+  for (var i = 0; i < links.length; i++) {
+    links[i].addEventListener("click", confirmDelete);
+  }
+</script>
+
+
+<div class="album py-4">
     <div class="container">
+
+        <div class="text-center row pb-lg-5">
+            <div class="col-lg-6 col-md-8 mx-auto">
+                <p>
+                    <a href="game-form" class="btn btn-primary my-2">Registrar un juego</a>
+                <p>
+                <form action="searchTeam" method="post" class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar un juego" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+            </div>
+        </div>
+
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <%
                 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -27,9 +67,9 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="" class="btn btn-sm btn-outline-primary">Ver detalles</a>
-                                <a href="" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="remove-game?id=<%= game.getId() %>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </div>
-                            <small class="text-body-secondary">Fecha de lanzamiento: <b><%= game.getRelease_date() %></b></small>
+                            <small class="text-body-secondary">Fecha de lanzamiento: <b><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></b></small>
                         </div>
                     </div>
                 </div>
