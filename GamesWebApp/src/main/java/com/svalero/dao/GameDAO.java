@@ -2,6 +2,7 @@ package com.svalero.dao;
 
 import com.svalero.domain.Game;
 import com.svalero.domain.Purchase;
+import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
@@ -20,9 +21,9 @@ public interface GameDAO {
     @SqlUpdate("UPDATE games SET name = ?, developer = ?, game_18 = ?, release_date = ? WHERE name = ? AND developer = ?")
     void modifyGame(String name, String developer, char game_18, LocalDate release_date, String previousName, String previousDeveloper);
 
-    @SqlQuery("SELECT * FROM games WHERE name = ?")
+    @SqlQuery("SELECT * FROM games WHERE name like ? or developer like ?")
     @UseRowMapper(GameMapper.class)
-    List<Game> searchGame(String name);
+    List<Game> searchGameByNameOrDeveloper(@Bind("name") String name, @Bind("developer") String developer);
 
     @SqlUpdate("DELETE FROM games WHERE id = ?")
     void deleteGame(int id);
