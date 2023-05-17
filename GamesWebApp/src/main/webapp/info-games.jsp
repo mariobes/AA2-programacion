@@ -18,7 +18,7 @@
                 <p>
                     <a href="game-form" class="btn btn-primary my-2">Registrar un juego</a>
                 <p>
-                <form action="searchTeam" method="post" class="form-inline mt-2 mt-md-0">
+                <form action="searchGame" method="post" class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar un juego" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>

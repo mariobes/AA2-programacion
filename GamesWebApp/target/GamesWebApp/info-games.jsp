@@ -10,33 +10,6 @@
 
 <%@include file="includes/header.jsp"%>
 
-<script>
-  // Obtener todos los enlaces con el atributo href que comience con "remove-game"
-  var links = document.querySelectorAll("a[href^='remove-game']");
-
-  // Función para mostrar el cuadro de diálogo de confirmación y eliminar si se confirma
-  function confirmDelete(event) {
-    event.preventDefault();
-    var elementId = this.getAttribute("href"); // Obtener el nombre del elemento a eliminar
-    var message = "¿Estás seguro de que deseas eliminar el elemento " + elementId + "?";
-
-    if (confirm(message)) {
-      // Aquí puedes agregar la lógica para eliminar el elemento utilizando el nombre obtenido
-      // Por ejemplo, puedes usar getElementById o cualquier otra forma de selección de elementos
-      var elementToRemove = document.getElementById(elementId);
-      if (elementToRemove) {
-        elementToRemove.remove(); // Eliminar el elemento
-      }
-    }
-  }
-
-  // Asociar el evento de clic a los enlaces seleccionados
-  for (var i = 0; i < links.length; i++) {
-    links[i].addEventListener("click", confirmDelete);
-  }
-</script>
-
-
 <div class="album py-4">
     <div class="container">
 
@@ -45,7 +18,7 @@
                 <p>
                     <a href="game-form" class="btn btn-primary my-2">Registrar un juego</a>
                 <p>
-                <form action="searchTeam" method="post" class="form-inline mt-2 mt-md-0">
+                <form action="searchGame" method="post" class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar un juego" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
