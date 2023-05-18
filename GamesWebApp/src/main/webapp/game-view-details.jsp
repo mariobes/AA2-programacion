@@ -3,6 +3,7 @@
 <%@ page import="com.svalero.dao.Database" %>
 <%@ page import="com.svalero.dao.GameDAO" %>
 <%@ page import="com.svalero.domain.Game" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
@@ -23,7 +24,7 @@
                 <h2 class="card-title"><%= game.getName() %></h2>
                 <h5 class="card-title"><%= game.getDeveloper() %></h5>
                 <p class="card-text"><%= game.getGame_18() %></p>
-                <p class="card-text"><small class="text-muted"><%= game.getRelease_date() %></small></p>
+                <p class="card-text"><small class="text-muted"><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></small></p>
             </div>
         </div>
     </div>

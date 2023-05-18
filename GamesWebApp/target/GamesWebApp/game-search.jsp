@@ -2,6 +2,7 @@
 
 <%@ page import="java.util.List" %>
 <%@ page import="com.svalero.domain.Game" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 
 <%@page contentType="text/html"%>
 <%@page pageEncoding="UTF-8"%>
@@ -33,7 +34,7 @@
                 <td><%= game.getName() %></td>
                 <td><%= game.getDeveloper() %></td>
                 <td><%= game.getGame_18() %></td>
-                <td><%= game.getRelease_date() %></td>
+                <td><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></td>
                 <td><a href="game-view-details.jsp?id=<%= game.getId()%>" class="btn btn-sm btn-outline-secondary">Ver detalles</a></td>
             </tr>
             <% } %>

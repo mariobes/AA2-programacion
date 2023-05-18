@@ -2,6 +2,7 @@ com\svalero\servlet\RemoveGameServlet.class
 com\svalero\servlet\SearchGameServlet.class
 com\svalero\dao\Database.class
 com\svalero\dao\PurchaseDAO.class
+com\svalero\servlet\AddGameServlet.class
 com\svalero\dao\GameMapper.class
 com\svalero\domain\Game.class
 com\svalero\util\Constants.class

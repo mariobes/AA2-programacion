@@ -30,15 +30,4 @@ public interface PurchaseDAO {
     @UseRowMapper(PurchaseMapper.class)
     List<Purchase> listAllPurchases() throws SQLException;
 
-    static boolean isPurchase(int id) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM purchases WHERE id = ?";
-
-        long count = db.createQuery(sql)
-                .bind(0, id)
-                .mapTo(Long.class)
-                .one();
-
-        return count != 0;
-    }
-
 }

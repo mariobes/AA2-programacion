@@ -30,7 +30,7 @@ public class RemoveGameServlet extends HttpServlet {
                 return null;
             });
 
-            response.sendRedirect("index.jsp");
+            response.sendRedirect("info-games.jsp");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }

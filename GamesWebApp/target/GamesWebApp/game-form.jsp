@@ -5,41 +5,43 @@
 
 <%@include file="includes/header.jsp"%>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("form").on("submit", function(event) {
+            event.preventDefault();
+            var formValue = $(this).serialize();
+            $.post("add-game", formValue, function(data) {
+                $("#result").html(data);
+            });
+        });
+    });
+</script>
+
 <main>
     <div class="container">
         <br/>
-        <form class="row g-3" method="post" action="edit-vehicle" enctype="multipart/form-data">
+        <form class="row g-3" method="post" action="add-game" enctype="multipart/form-data">
             <div class="col-md-6">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name" value='<%= name %>'>
+                <input type="text" class="form-control" id="name" name="name">
             </div>
             <div class="col-md-6">
-                <label for="developer" class="form-label">Marca</label>
-                <input type="text" class="form-control" id="developer" name="developer" value='<%= developer %>'>
+                <label for="developer" class="form-label">Desarrollador</label>
+                <input type="text" class="form-control" id="developer" name="developer">
             </div>
             <div class="col-md-6">
                 <label for="game_18" class="form-label">Juego +18</label>
-                <input type="checkbox" class="form-control" id="game_18" name="game_18" value='<%= game_18 %>'>
+                <select class="form-control" id="game_18" name= "game_18">
+                    <option value="0">No</option>
+                    <option value="1">Sí</option>
+                </select>
             </div>
-            <div class="col-md-6">
-                <label for="game_18" class="form-label">Disabled checkbox</label>
-                <input type="checkbox" class="form-control" id="game_18" name="game_18" value='<%= game_18 %>'>
-            </div>
-            <div class="col-md-6">
-                <label for="image" class="form-label">Imagen</label>
-                <input type="file" class="form-control" id="image" name="image">
-            </div>
-            <input type="hidden" name="action" value="<%= action %>"/>
-            <%
-            if (action.equals("edit")) {
-            int id = Integer.parseInt(request.getParameter("id"));
-            %>
-            <input type="hidden" name="id" value="<%= id %>"/>
-            <%
-            }
-            %>
+<!--            <div class="col-md-6">-->
+<!--                <label for="image" class="form-label">Imagen</label>-->
+<!--                <input type="file" class="form-control" id="image" name="image">-->
+<!--            </div>-->
             <div class="col-12">
-                <input type="submit" value="<%= action %>"/>
+                <button type="submit" class="btn btn-primary">Registrar</button>
             </div>
         </form>
         <br/>
