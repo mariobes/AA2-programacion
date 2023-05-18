@@ -10,13 +10,29 @@
 
 <%@include file="includes/header.jsp"%>
 
+<script>
+$(document).ready(function() {
+  $("a[href^='remove-game'],a[href^='remove-purchase']").click(function(event) {
+    event.preventDefault();
+    var url = $(this).attr("href");
+    var message = $(this).attr("data-message");
+    if (typeof message === "undefined") {
+      message = "¿Estás seguro de que quieres eliminar?";
+    }
+    if (confirm(message)) {
+      window.location.href = url;
+    }
+  });
+});
+</script>
+
 <div class="album py-4">
     <div class="container">
 
         <div class="text-center row pb-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <p>
-                    <a href="game-form" class="btn btn-primary my-2">Registrar un juego</a>
+                    <a href="game-form.jsp" class="btn btn-primary my-2">Registrar un juego</a>
                 <p>
                 <form action="searchGame" method="post" class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar un juego" aria-label="Search">

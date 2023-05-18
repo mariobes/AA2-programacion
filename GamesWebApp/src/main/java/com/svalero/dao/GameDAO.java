@@ -36,45 +36,4 @@ public interface GameDAO {
     @UseRowMapper(GameMapper.class)
     Game getGame(int id);
 
-    static boolean isGame(String name, String developer) {
-
-        String sql = "SELECT COUNT(*) FROM games WHERE name = ? AND developer = ?";
-
-        long count = db.createQuery(sql)
-                .bind(0, name)
-                .bind(1, developer)
-                .mapTo(Long.class)
-                .one();
-
-        return count != 0;
-    }
-
-    static Game getGame(String name, String developer) {
-        String sql = "SELECT * FROM games WHERE name = ? AND developer = ?";
-
-        Game game = db.createQuery(sql)
-                .bind(0, name)
-                .bind(1, developer)
-                .mapToBean(Game.class)
-                .one();
-
-//        String purchaseSql = "SELECT * FROM purchases WHERE game_id = ?";
-//        List<Purchase> purchases = db.createQuery(purchaseSql)
-//                .bind(0, game.getId())
-//                .mapToBean(Purchase.class)
-//                .list();
-//        game.setPurchases(purchases);
-
-        return game;
-    }
-
-//    static Game getGame(int id) {
-//        String sql = "SELECT * FROM games WHERE id = ?";
-//
-//        return db.createQuery(sql)
-//                .bind(0, id)
-//                .mapToBean(Game.class)
-//                .one();
-//    }
-
 }
