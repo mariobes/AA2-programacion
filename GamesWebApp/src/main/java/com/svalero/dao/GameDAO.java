@@ -15,8 +15,8 @@ import static com.svalero.dao.Database.db;
 
 public interface GameDAO {
 
-    @SqlUpdate("INSERT INTO games (name, developer, game_18, release_date) VALUES (?, ?, ?, ?)")
-    void registerGame(String name, String developer, char game_18, LocalDate release_date);
+    @SqlUpdate("INSERT INTO games (name, developer, game_18, release_date, image) VALUES (?, ?, ?, ?, ?)")
+    void registerGame(String name, String developer, char game_18, LocalDate release_date, String image);
 
     @SqlUpdate("UPDATE games SET name = ?, developer = ?, game_18 = ?, release_date = ? WHERE name = ? AND developer = ?")
     void modifyGame(String name, String developer, char game_18, LocalDate release_date, String previousName, String previousDeveloper);

@@ -5,17 +5,17 @@
 
 <%@include file="includes/header.jsp"%>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $("form").on("submit", function(event) {
-            event.preventDefault();
-            var formValue = $(this).serialize();
-            $.post("add-game", formValue, function(data) {
-                $("#result").html(data);
-            });
-        });
-    });
-</script>
+<!--<script type="text/javascript">-->
+<!--    $(document).ready(function() {-->
+<!--        $("form").on("submit", function(event) {-->
+<!--            event.preventDefault();-->
+<!--            var formValue = $(this).serialize();-->
+<!--            $.post("add-game", formValue, function(data) {-->
+<!--                $("#result").html(data);-->
+<!--            });-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
 
 <main>
     <div class="container">
@@ -36,12 +36,12 @@
                     <option value="1">Sí</option>
                 </select>
             </div>
-<!--            <div class="col-md-6">-->
-<!--                <label for="image" class="form-label">Imagen</label>-->
-<!--                <input type="file" class="form-control" id="image" name="image">-->
-<!--            </div>-->
+            <div class="col-md-6">
+                <label for="image" class="form-label">Imagen</label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
             <div class="col-12">
-                <button type="submit" class="btn btn-primary">Registrar</button>
+                <input type="submit" class="btn btn-primary" value="Registrar"/>
             </div>
         </form>
         <br/>

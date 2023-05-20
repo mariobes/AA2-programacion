@@ -20,6 +20,7 @@ public class GameMapper implements RowMapper<Game> {
                 rs.getString("name"),
                 rs.getString("developer"),
                 rs.getString("game_18").charAt(0),
-                DateUtils.getLocalDate(rs.getDate("release_date")));
+                DateUtils.getLocalDate(rs.getDate("release_date")),
+                rs.getString("image"));
     }
 }
