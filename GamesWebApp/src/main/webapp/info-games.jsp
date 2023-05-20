@@ -50,6 +50,7 @@ $(document).ready(function() {
             %>
             <div class="col">
                 <div class="card shadow-sm">
+                    <img src="../juegos_data/<%= game.getImage() %>" class="bd-placeholder-img card-img-top"/>
                     <div class="card-body">
                         <p class="card-text"><b><%= game.getName() %></b></p>
                         <p class="card-text"><%= game.getDeveloper() %></p>

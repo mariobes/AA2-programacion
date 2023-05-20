@@ -17,9 +17,9 @@
         Database.connect();
         Game game= Database.jdbi.withExtension(GameDAO.class, dao-> dao.getGame(idGame));
     %>
-    <div class="container">
-        <div class="card mb-3">
-<!--            <img src="..." class="card-img-top" alt="...">-->
+    <div class="container ">
+        <div class="card mb-3 w-25">
+            <img src="../juegos_data/<%= game.getImage() %>" class="bd-placeholder-img card-img-top"/>
             <div class="card-body">
                 <h2 class="card-title"><%= game.getName() %></h2>
                 <h5 class="card-title"><%= game.getDeveloper() %></h5>

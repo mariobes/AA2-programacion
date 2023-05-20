@@ -21,5 +21,7 @@ public class Game {
     private char game_18;
     @NonNull
     private LocalDate release_date;
+    @NonNull
+    private String image;
 
 }
