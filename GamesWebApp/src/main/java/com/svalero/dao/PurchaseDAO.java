@@ -19,7 +19,7 @@ public interface PurchaseDAO {
     void registerPurchase(float price, String phone, String payment_method, int game_id);
 
     @SqlUpdate("UPDATE purchases SET price = ?, phone = ?, payment_method = ?, game_id = ? WHERE id = ?")
-    void modifyPurchase(float price, String phone, String payment_method, int game_id, String id);
+    void modifyPurchase(float price, String phone, String payment_method, int game_id, int id);
 
     @SqlUpdate("DELETE FROM purchases WHERE id = ?")
     void deletePurchase(int id);
