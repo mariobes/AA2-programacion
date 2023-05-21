@@ -91,6 +91,13 @@
       .bd-mode-toggle {
         z-index: 1500;
       }
+
+      .details {
+       display:flex;
+       flex-wrap: wrap;
+       justify-content: center;
+      }
+
     </style>
 
 

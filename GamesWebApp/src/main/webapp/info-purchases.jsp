@@ -1,8 +1,7 @@
 <%@ page import="com.svalero.dao.Database" %>
-<%@ page import="com.svalero.dao.GameDAO" %>
-<%@ page import="com.svalero.domain.Game" %>
+<%@ page import="com.svalero.dao.PurchaseDAO" %>
+<%@ page import="com.svalero.domain.Purchase" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.time.format.DateTimeFormatter" %>
 
 
 <%@page contentType="text/html"%>
@@ -12,7 +11,7 @@
 
 <script>
 $(document).ready(function() {
-  $("a[href^='remove-game']").click(function(event) {
+  $("a[href^='remove-purchase']").click(function(event) {
     event.preventDefault();
     var url = $(this).attr("href");
     var message = $(this).attr("data-message");
@@ -45,21 +44,22 @@ $(document).ready(function() {
             <%
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Database.connect();
-                List<Game> gameList = Database.jdbi.withExtension(GameDAO.class, GameDAO::getAllGames);
-                for (Game game : gameList) {
+                List<Purchase> purchaseList = Database.jdbi.withExtension(PurchaseDAO.class, PurchaseDAO::getAllPurchases);
+                for (Purchase purchase : purchaseList) {
             %>
             <div class="col">
                 <div class="card shadow-sm">
-                    <img src="../juegos_data/<%= game.getImage() %>" class="bd-placeholder-img card-img-top"/>
                     <div class="card-body">
-                        <p class="card-text"><b><%= game.getName() %></b></p>
-                        <p class="card-text"><%= game.getDeveloper() %></p>
+                        <p class="card-text">Juego: <b><%= purchase.getGame().getName() %></b></p>
+                        <p class="card-text">Id compra: <%= purchase.getId() %></p>
+                        <p class="card-text">Precio: <%= purchase.getPrice() %></p>
+                        <p class="card-text">Teléfono: <%= purchase.getPhone() %></p>
+                        <p class="card-text">Método de pago: <%= purchase.getPayment_method() %></p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="game-view-details.jsp?id=<%= game.getId() %>" class="btn btn-sm btn-outline-primary">Ver detalles</a>
-                                <a href="remove-game?id=<%= game.getId() %>" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="" class="btn btn-sm btn-outline-primary">Ver detalles</a>
+                                <a href="" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </div>
-                            <small class="text-body-secondary">Fecha de lanzamiento: <b><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></b></small>
                         </div>
                     </div>
                 </div>
