@@ -18,8 +18,8 @@ public interface GameDAO {
     @SqlUpdate("INSERT INTO games (name, developer, game_18, release_date, image) VALUES (?, ?, ?, ?, ?)")
     void registerGame(String name, String developer, char game_18, LocalDate release_date, String image);
 
-    @SqlUpdate("UPDATE games SET name = ?, developer = ?, game_18 = ?, release_date = ? WHERE name = ? AND developer = ?")
-    void modifyGame(String name, String developer, char game_18, LocalDate release_date, String previousName, String previousDeveloper);
+    @SqlUpdate("UPDATE games SET name = ?, developer = ?, game_18 = ?, release_date = ?, image = ? WHERE id = ?")
+    void modifyGame(String name, String developer, char game_18, LocalDate release_date,String image, int id);
 
     @SqlQuery("SELECT * FROM games WHERE name like ? or developer like ?")
     @UseRowMapper(GameMapper.class)

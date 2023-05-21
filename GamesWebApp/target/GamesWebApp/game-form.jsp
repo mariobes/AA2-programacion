@@ -17,17 +17,25 @@
 <!--    });-->
 <!--</script>-->
 
+<%
+    String action = request.getParameter("action");
+    String name = request.getParameter("name");
+    if (name == null) name = "";
+    String developer = request.getParameter("developer");
+    if (developer == null) developer = "";
+%>
+
 <main>
     <div class="container">
         <br/>
-        <form class="row g-3" method="post" action="add-game" enctype="multipart/form-data">
+        <form class="row g-3" method="post" action="edit-game" enctype="multipart/form-data">
             <div class="col-md-6">
                 <label for="name" class="form-label">Nombre</label>
-                <input type="text" class="form-control" id="name" name="name">
+                <input type="text" class="form-control" id="name" name="name" value='<%= name %>'>
             </div>
             <div class="col-md-6">
                 <label for="developer" class="form-label">Desarrollador</label>
-                <input type="text" class="form-control" id="developer" name="developer">
+                <input type="text" class="form-control" id="developer" name="developer" value='<%= developer %>'>
             </div>
             <div class="col-md-6">
                 <label for="game_18" class="form-label">Juego +18</label>
@@ -40,6 +48,15 @@
                 <label for="image" class="form-label">Imagen</label>
                 <input type="file" class="form-control" id="image" name="image">
             </div>
+            <input type="hidden" name="action" value="<%= action %>">
+            <%
+            if (action.equals("edit")) {
+                int id = Integer.parseInt(request.getParameter("id"));
+            %>
+                <input type="hidden" name="id" value="<%= id %>">
+            <%
+            }
+            %>
             <div class="col-12">
                 <input type="submit" class="btn btn-primary" value="Registrar"/>
             </div>
