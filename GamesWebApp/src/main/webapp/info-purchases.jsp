@@ -33,8 +33,8 @@ $(document).ready(function() {
                 <p>
                     <a href="purchase-form.jsp?action=register" class="btn btn-primary my-2">Registrar un juego</a>
                 <p>
-                <form action="searchGame" method="post" class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar un juego" aria-label="Search">
+                <form action="searchPurchase" method="post" class="form-inline mt-2 mt-md-0">
+                    <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar una compra" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
                 </form>
             </div>

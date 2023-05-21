@@ -3,6 +3,7 @@ package com.svalero.dao;
 
 import com.svalero.domain.Game;
 import com.svalero.domain.Purchase;
+import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
@@ -20,10 +21,6 @@ public interface PurchaseDAO {
     @SqlUpdate("UPDATE purchases SET price = ?, phone = ?, payment_method = ?, game_id = ? WHERE id = ?")
     void modifyPurchase(float price, String phone, String payment_method, int game_id, String id);
 
-    @SqlQuery("SELECT * FROM purchases where game_id = ?")
-    @UseRowMapper(PurchaseMapper.class)
-    List<Purchase> searchPurchase(int game_id);
-
     @SqlUpdate("DELETE FROM purchases WHERE id = ?")
     void deletePurchase(int id);
 
@@ -35,4 +32,7 @@ public interface PurchaseDAO {
     @UseRowMapper(PurchaseMapper.class)
     Purchase getPurchase(int id);
 
+    @SqlQuery("SELECT * FROM purchases WHERE game_id = ?")
+    @UseRowMapper(PurchaseMapper.class)
+    List<Purchase> searchPurchase(int game_id);
 }
