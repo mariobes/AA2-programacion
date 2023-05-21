@@ -31,4 +31,8 @@ public interface PurchaseDAO {
     @UseRowMapper(PurchaseMapper.class)
     List<Purchase> getAllPurchases();
 
+    @SqlQuery("SELECT * FROM purchases WHERE id = ?")
+    @UseRowMapper(PurchaseMapper.class)
+    Purchase getPurchase(int id);
+
 }

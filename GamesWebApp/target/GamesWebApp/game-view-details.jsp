@@ -15,7 +15,7 @@
         int idGame= Integer.parseInt(request.getParameter("id"));
         Class.forName("com.mysql.cj.jdbc.Driver");
         Database.connect();
-        Game game= Database.jdbi.withExtension(GameDAO.class, dao-> dao.getGame(idGame));
+        Game game = Database.jdbi.withExtension(GameDAO.class, dao-> dao.getGame(idGame));
 
         String textGame_18;
         if (game.getGame_18() == '0') {
