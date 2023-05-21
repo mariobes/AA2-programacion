@@ -31,9 +31,10 @@
                 <h2 class="card-title"><%= game.getName() %></h2>
                 <h5 class="card-title"><%= game.getDeveloper() %></h5>
                 <br/>
+                <p class="card-text">Id juego: <b><%= game.getId() %></b></p>
                 <p class="card-text">Juego +18: <b><%= textGame_18 %></b></p>
                 <p class="card-text">Fecha de lanzamiento: <b><%= game.getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></b></p>
-                <a href="game-form.jsp?id=<%=game.getId() %>&action=edit&name=<%= game.getName() %>&developer=<%= game.getDeveloper() %>"
+                <a href="game-form.jsp?id=<%= game.getId() %>&action=edit&name=<%= game.getName() %>&developer=<%= game.getDeveloper() %>"
                    class="btn btn-sm btn-outline-primary">Modificar</a>
             </div>
         </div>
