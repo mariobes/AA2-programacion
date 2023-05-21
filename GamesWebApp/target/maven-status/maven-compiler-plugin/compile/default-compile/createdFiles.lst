@@ -8,6 +8,7 @@ com\svalero\domain\Purchase.class
 com\svalero\servlet\AddEditGameServlet.class
 com\svalero\dao\PurchaseDAO.class
 com\svalero\servlet\RemovePurchaseServlet.class
+com\svalero\servlet\SearchPurchaseServlet.class
 com\svalero\util\Constants.class
 com\svalero\util\DateUtils.class
 com\svalero\dao\GameDAO.class
