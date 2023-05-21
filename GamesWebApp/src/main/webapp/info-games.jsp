@@ -12,7 +12,7 @@
 
 <script>
 $(document).ready(function() {
-  $("a[href^='remove-game'],a[href^='remove-purchase']").click(function(event) {
+  $("a[href^='remove-game']").click(function(event) {
     event.preventDefault();
     var url = $(this).attr("href");
     var message = $(this).attr("data-message");

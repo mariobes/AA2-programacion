@@ -15,7 +15,7 @@ public class PurchaseMapper implements RowMapper<Purchase> {
     public Purchase map(ResultSet rs, StatementContext ctx) throws SQLException {
 
         Game game = Database.jdbi.withExtension(GameDAO.class,
-                dao -> dao.getGame(rs.getInt("ID_team")));
+                dao -> dao.getGame(rs.getInt("game_id")));
 
         return new Purchase(rs.getInt("id"),
                 rs.getFloat("price"),
