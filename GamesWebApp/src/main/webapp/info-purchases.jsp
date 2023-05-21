@@ -58,7 +58,7 @@ $(document).ready(function() {
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
                                 <a href="" class="btn btn-sm btn-outline-primary">Ver detalles</a>
-                                <a href="" class="btn btn-sm btn-outline-danger">Eliminar</a>
+                                <a href="remove-purchase?id=<%= purchase.getId() %>" class="btn btn-sm btn-outline-danger">Eliminar</a>
                             </div>
                         </div>
                     </div>
