@@ -31,7 +31,7 @@ $(document).ready(function() {
         <div class="text-center row pb-lg-5">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <p>
-                    <a href="purchase-form.jsp?action=register" class="btn btn-primary my-2">Registrar un juego</a>
+                    <a href="purchase-form.jsp?action=register" class="btn btn-primary my-2">Registrar una compra</a>
                 <p>
                 <form action="searchPurchase" method="post" class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" name="search" method="post" type="text" id="search" placeholder="Buscar una compra" aria-label="Search">

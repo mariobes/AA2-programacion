@@ -5,17 +5,30 @@
 
 <%@include file="includes/header.jsp"%>
 
-<!--<script type="text/javascript">-->
-<!--    $(document).ready(function() {-->
-<!--        $("form").on("submit", function(event) {-->
-<!--            event.preventDefault();-->
-<!--            var formValue = $(this).serialize();-->
-<!--            $.post("add-game", formValue, function(data) {-->
-<!--                $("#result").html(data);-->
-<!--            });-->
-<!--        });-->
-<!--    });-->
-<!--</script>-->
+<script>
+    $(document).ready(function() {
+    $("form").on("submit", function(event) {
+        event.preventDefault();
+        var formData = new FormData(this);
+        var inputFile = $("#image")[0].files[0];
+        formData.append("archivo", inputFile);
+        $.ajax({
+            url: "edit-game",
+            type: "POST",
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(data) {
+                $("#result").html(data);
+            },
+            error: function(xhr, status, error) {
+                console.error("Error al registrar la acción:", error);
+            }
+        });
+    });
+});
+
+</script>
 
 <%
     String action = request.getParameter("action");
@@ -28,7 +41,7 @@
 <main>
     <div class="container">
         <br/>
-        <form class="row g-3" method="post" action="edit-game" enctype="multipart/form-data">
+        <form class="row g-3" method="post" enctype="multipart/form-data">
             <div class="col-md-6">
                 <label for="name" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="name" name="name" value='<%= name %>'>

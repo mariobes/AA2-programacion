@@ -38,7 +38,7 @@
                 <p class="card-text">Id juego: <b><%= purchase.getGame().getId() %></b></p>
                 <p class="card-text">Juego +18: <b><%= textGame_18 %></b></p>
                 <p class="card-text">Fecha de lanzamiento: <b><%= purchase.getGame().getRelease_date().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")) %></b></p>
-                <a href="purchase-form.jsp?id=<%= purchase.getId() %>&action=edit&price=<%= purchase.getPrice() %>&phone=<%= purchase.getPhone() %>&payment_method=<%= purchase.getPayment_method() %>"
+                <a href="purchase-form.jsp?id=<%= purchase.getId() %>&action=edit&price=<%= purchase.getPrice() %>&phone=<%= purchase.getPhone() %>&payment_method=<%= purchase.getPayment_method() %>&gameId=<%= purchase.getGame().getId() %>"
                    class="btn btn-sm btn-outline-primary">Modificar</a>
             </div>
         </div>

@@ -56,8 +56,7 @@ public class AddEditPurchaseServlet extends HttpServlet {
                 });
             }
 
-            response.sendRedirect("info-purchases.jsp");
-            out.println("<div class='alert alert-success' role='alert'>Compra guardado correctamente</div>");
+            out.println("<div class='alert alert-success' role='alert'>Compra guardada correctamente</div>");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
         }

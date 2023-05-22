@@ -64,7 +64,6 @@ public class AddEditGameServlet extends HttpServlet {
                 });
             }
 
-            response.sendRedirect("info-games.jsp");
             out.println("<div class='alert alert-success' role='alert'>Juego guardado correctamente</div>");
         } catch (ClassNotFoundException cnfe) {
             cnfe.printStackTrace();
