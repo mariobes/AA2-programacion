@@ -5,12 +5,24 @@
 
 <%@include file="includes/header.jsp"%>
 
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("form").on("submit", function(event) {
+            event.preventDefault();
+            var formValue = $(this).serialize();
+            $.post("edit-purchase", formValue, function(data) {
+                $("#result").html(data);
+            });
+        });
+    });
+</script>
+
 <!--<script type="text/javascript">-->
 <!--    $(document).ready(function() {-->
 <!--        $("form").on("submit", function(event) {-->
 <!--            event.preventDefault();-->
 <!--            var formValue = $(this).serialize();-->
-<!--            $.post("add-game", formValue, function(data) {-->
+<!--            $.post("edit-game", formValue, function(data) {-->
 <!--                $("#result").html(data);-->
 <!--            });-->
 <!--        });-->
@@ -25,13 +37,14 @@
     if (phone == null) phone = "";
     String payment_method = request.getParameter("payment_method");
     if (payment_method == null) payment_method = "";
-
+    String gameId = request.getParameter("gameId");
+    if (gameId == null) gameId = "";
 %>
 
 <main>
     <div class="container">
         <br/>
-        <form class="row g-3" method="post" action="edit-purchase" enctype="multipart/form-data">
+        <form class="row g-3" method="post" enctype="multipart/form-data">
             <div class="col-md-6">
                 <label for="price" class="form-label">Precio</label>
                 <input type="text" class="form-control" id="price" name="price" value='<%= price %>'>
@@ -46,7 +59,7 @@
             </div>
             <div class="col-md-6">
                 <label for="gameId" class="form-label">Juego</label>
-                <input type="text" class="form-control" id="gameId" name="gameId">
+                <input type="text" class="form-control" id="gameId" name="gameId" value='<%= gameId %>'>
             </div>
             <input type="hidden" name="action" value="<%= action %>">
             <%
