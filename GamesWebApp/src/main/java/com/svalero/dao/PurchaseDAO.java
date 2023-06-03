@@ -1,7 +1,9 @@
 package com.svalero.dao;
 
 
+import com.svalero.domain.Game;
 import com.svalero.domain.Purchase;
+import org.jdbi.v3.sqlobject.customizer.Bind;
 import org.jdbi.v3.sqlobject.statement.SqlQuery;
 import org.jdbi.v3.sqlobject.statement.SqlUpdate;
 import org.jdbi.v3.sqlobject.statement.UseRowMapper;
@@ -14,31 +16,23 @@ import static com.svalero.dao.Database.db;
 public interface PurchaseDAO {
 
     @SqlUpdate("INSERT INTO purchases (price, phone, payment_method, game_id) VALUES (?, ?, ?, ?)")
-    void registerPurchase(float price, String phone, String payment_method, int game_id) throws  SQLException;
+    void registerPurchase(float price, String phone, String payment_method, int game_id);
 
     @SqlUpdate("UPDATE purchases SET price = ?, phone = ?, payment_method = ?, game_id = ? WHERE id = ?")
-    void modifyPurchase(float price, String phone, String payment_method, int game_id, String id) throws  SQLException;
-
-    @SqlQuery("SELECT * FROM purchases where game_id = ?")
-    @UseRowMapper(PurchaseMapper.class)
-    List<Purchase> searchPurchase(int game_id) throws SQLException;
+    void modifyPurchase(float price, String phone, String payment_method, int game_id, int id);
 
     @SqlUpdate("DELETE FROM purchases WHERE id = ?")
-    void deletePurchase(int id) throws SQLException;
+    void deletePurchase(int id);
 
     @SqlQuery("SELECT * FROM purchases")
     @UseRowMapper(PurchaseMapper.class)
-    List<Purchase> listAllPurchases() throws SQLException;
+    List<Purchase> getAllPurchases();
 
-    static boolean isPurchase(int id) throws SQLException {
-        String sql = "SELECT COUNT(*) FROM purchases WHERE id = ?";
+    @SqlQuery("SELECT * FROM purchases WHERE id = ?")
+    @UseRowMapper(PurchaseMapper.class)
+    Purchase getPurchase(int id);
 
-        long count = db.createQuery(sql)
-                .bind(0, id)
-                .mapTo(Long.class)
-                .one();
-
-        return count != 0;
-    }
-
+    @SqlQuery("SELECT * FROM purchases WHERE game_id = ?")
+    @UseRowMapper(PurchaseMapper.class)
+    List<Purchase> searchPurchase(int game_id);
 }
